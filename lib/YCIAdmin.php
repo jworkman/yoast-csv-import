@@ -89,7 +89,7 @@ class YCIAdmin {
 				array_push($log, sprintf("Updating SEO meta title for \"%s\"", $slug));
 			}
 
-			if (isset($row['Canonical'])) {
+			if (isset($row['Canonical']) && filter_var($row['Canonical'], FILTER_VALIDATE_URL) !== false) {
 				update_post_meta($post->ID, '_yoast_wpseo_canonical', $row['Canonical']);
 				array_push($log, sprintf("Updating SEO meta canonical for \"%s\"", $slug));
 			}
